@@ -25,7 +25,7 @@ const getWeekDay = function (date) {
         case 4: return 'Quinta';
         case 5: return 'Sexta';
         case 6: return 'Sábado';
-        case 0  : return 'Domingo';
+        case 7  : return 'Domingo';
     }
 }
 

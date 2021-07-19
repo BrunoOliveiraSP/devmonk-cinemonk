@@ -76,7 +76,7 @@ export default function Box(props) {
     <Link to={`/filme/${session.data}`}>
       <Container>
         <div className="week"> {session.diaSemana} </div>
-        <div className="day"> {session.dia} </div>
+        <div className="day"> - </div>
         <div className="month"> {session.mes} </div>
       </Container>
     </Link>

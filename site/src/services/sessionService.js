@@ -10,9 +10,4 @@ export default class SessionService {
         const resp = await api.get('/');
         return resp.data;
     }
-
-    async listMovies(data) {
-        const resp = await api.get(`/filmes/${data}`);
-        return resp.data;
-    }
 }

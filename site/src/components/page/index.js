@@ -6,11 +6,11 @@ export default function Page(props) {
   return (
     <PageContainer>
       <Header 
-        description={props.description}
+        description="Descrição"
         descriptionOnTop={props.descriptionOnTop} />
 
       {props.children}
-
+    
     </PageContainer>
   )
 }

@@ -9,7 +9,7 @@ const service = new SessaoService();
 router.get('/', async (req, resp) => {
     try {
         let dates = await service.listAvailable();
-        resp.send(dates);    
+        resp.send([]);    
     } catch (e) {
         resp.status(500).send({
             error: 'An error has ocurred. Try later.'

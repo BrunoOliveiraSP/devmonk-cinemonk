@@ -18,7 +18,7 @@ export default function Home() {
         O que você quer fazer?
       </div>
       
-      <Link to="/sessao">
+      <Link to="/session">
         <button className="btn">
             <div> COMPRAR INGRESSO </div>
         </button>

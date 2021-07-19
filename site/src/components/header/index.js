@@ -5,7 +5,7 @@ export default function Header(props) {
     <HeaderContainer descriptionOnTop={props.descriptionOnTop}>
       <div className="header">
         <div className="logo">
-          <img src="/assets/images/logo.png" alt="" />
+          <img src="/assets/logo.png" alt="" />
         </div>
         <div className="title">
           CineMonk
