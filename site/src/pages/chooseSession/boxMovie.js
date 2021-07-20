@@ -56,16 +56,14 @@ const Container = styled.div`
 
 
 export default function Box(props) {
-    const { nome, classificacao, capa, idiomas } = props.movie;
-  
     return (
         <Container>
-        <img src={capa} alt="" />
+        <img src="/assets/images/capa_filme.jpg" alt="" />
         <div className="movie-info">
-                <div className="title"> {nome} </div>
+                <div className="title"> Harry Potter e a Pedra Filosofal </div>
             <div>
-                <div className="description"> {idiomas} </div>
-                <div className="description"> Classificação: {classificacao} </div>
+                <div className="description"> Dublado </div>
+                <div className="description"> Classificação: +12 </div>
             </div>
             </div>
         </Container>

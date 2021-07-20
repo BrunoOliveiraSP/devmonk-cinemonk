@@ -34,12 +34,11 @@ const Container = styled.div`
 
 
 export default function Box(props) {
-  const {sala, hora, audio} = props.session
   return (
     <Container>
-      <div className="sala"> Sala {sala} </div>
-      <div className="hora"> {hora} </div>
-      <div className="idioma"> {audio} </div>
+      <div className="sala"> Sala 01 </div>
+      <div className="hora"> 08:40 </div>
+      <div className="idioma"> Legendado </div>
     </Container>
   )
 }
