@@ -17,7 +17,12 @@ export default function ChooseSession() {
         <BoxMovie />
         
         <Sessions>
-            <BoxSession />
+          <BoxSession />
+          <BoxSession />
+          <BoxSession />
+          <BoxSession />
+          <BoxSession />
+          <BoxSession />
         </Sessions>
         
       </Content>
