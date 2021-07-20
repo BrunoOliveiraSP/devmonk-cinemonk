@@ -1,9 +1,9 @@
 import { getDay, getMonth, getWeekDay  } from "../utils/dateUtils.js";
 
-import SessaoDatabase from '../database/sessaoDatabase.js'
-const db = new SessaoDatabase();
+import SessionDatabase from '../database/sessionDatabase.js'
+const db = new SessionDatabase();
 
-class SessaoService {
+class SessionService {
     async listAvailable() {
         let dates = await db.listAvailable();
         return dates.map(item => {
@@ -21,4 +21,4 @@ class SessaoService {
     }
 }
 
-export default SessaoService;
+export default SessionService;

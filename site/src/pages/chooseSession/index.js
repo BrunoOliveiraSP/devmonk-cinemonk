@@ -6,6 +6,8 @@ import BoxSession from './boxSession'
 import { Content, Sessions } from './styled'
 
 
+
+
 export default function ChooseSession() {
   const { location: { state: { filme, horarios } } } = useHistory();
 

@@ -2,7 +2,7 @@ import { toISOBRString } from "../utils/dateUtils.js";
 
 let db;
 
-class SessaoDatabase {
+class SessionDatabase {
     static inject(conn) {
         db = conn.db('ingressos').collection('sessoes')
     }
@@ -28,5 +28,5 @@ class SessaoDatabase {
     }
 }
 
-export default SessaoDatabase;
+export default SessionDatabase;
 

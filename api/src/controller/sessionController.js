@@ -1,9 +1,9 @@
 
 import { Router } from 'express'
-import SessaoService from '../service/sessaoService.js'
+import SessionService from '../service/sessionService.js'
 
 const router = Router();
-const service = new SessaoService();
+const service = new SessionService();
 
 
 router.get('/', async (req, resp) => {
