@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components'
 
 const Box = styled.div`
@@ -48,8 +49,15 @@ const Box = styled.div`
 
 export default function BoxMovie(props) {
   const { filme: { nome, classificacao, capa, idiomas } } = props.movie;
+
+  const { push } = useHistory()
+
+  const click = () => {
+    push('/horario', props.movie)
+  }
+
   return (
-      <Box>
+      <Box onClick={click} style={{cursor:'pointer'}}>
         <div className="movie">
           <img src={capa} alt="" />
         </div>

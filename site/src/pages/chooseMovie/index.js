@@ -13,7 +13,8 @@ const api = new Service();
 export default function ChooseMovie(props) {
   const { data } = useParams();
   const [movies, setMovies] = useState([]);
-      
+
+
   useEffect(() => {
     async function load() {
       const resp = await api.listMovies(data);
@@ -22,6 +23,7 @@ export default function ChooseMovie(props) {
     }
     load();
   }, [])
+
 
   return (
     <PageContainer 
