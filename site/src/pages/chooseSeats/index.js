@@ -10,13 +10,11 @@ const api = new SeatService();
 
 
 export default function ChooseSeats() {
-    const [seats, setSeats] = useState([]);
+    const [seats, setSeats] = useState([null]);
 
     useEffect(() => {
         async function loadSeats() {
-            let resp = await api.listSeats('2021-07-20', 'Cruella', '01', '09:00')
-            console.log(resp)
-            setSeats(resp);
+            // chamar api e carregar seats
         }
         loadSeats();
     }, []);

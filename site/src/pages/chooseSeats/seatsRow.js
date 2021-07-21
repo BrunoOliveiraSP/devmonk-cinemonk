@@ -56,47 +56,22 @@ const BlankSeat = styled.div`
 
 
 
-function getSeatLayout(letter, item) {
-    let SeatComp = (<Seat info={item} />);
-
-    let blanks = [];
-    if (letter === 'I' || letter === 'J' || letter === 'K') {
-        if (item.numero === 5 || item.numero === 15) {
-            blanks.push(1);
-        }
-    } else if (letter !== 'A') {
-        if (item.numero === 4 || item.numero === 14) {
-            blanks.push(1);
-            blanks.push(1);
-        }
-    }
-
-
-
-    if (blanks.length > 0)
-        SeatComp = (
-            <BlankSeatContainer>
-                {blanks.map(b => <BlankSeat />)}
-                <Seat info={item} />
-            </BlankSeatContainer>
-        )
-    return SeatComp;
-}
-
-
-
-
 export default function SeatsRow(props) {
-    const { letra, lugares } = props.row;
 
     return (
         <Container>
-            <Letter> {letra} </Letter>
+            <Letter>
+                A
+                {/* Carregar letra aqui */}
+            </Letter>
             
             <Seats>
-                {lugares.map(item =>
-                    getSeatLayout(letra, item)
-                )}
+                {/* Carregar lugares aqui */}
+                <Seat info={{ numero: 1 }} />
+                <Seat info={{ numero: 2 }} />
+                <Seat info={{ numero: 3 }} />
+                <Seat info={{ numero: 4 }} />
+                <Seat info={{ numero: 5 }} />
             </Seats>
 
         </Container>
