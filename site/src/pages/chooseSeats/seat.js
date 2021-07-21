@@ -17,7 +17,6 @@ const Seat = styled.div`
     cursor: pointer;
 
     margin: 0em .2em;
-
 `
 
 
