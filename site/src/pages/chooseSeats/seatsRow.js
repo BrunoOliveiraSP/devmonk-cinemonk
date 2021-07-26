@@ -75,8 +75,8 @@ function getSeatLayout(letter, item) {
 
     if (blanks.length > 0)
         SeatComp = (
-            <BlankSeatContainer>
-                {blanks.map(b => <BlankSeat />)}
+            <BlankSeatContainer key={`${letter}-${item.numero}`}>
+                {blanks.map((a,b) => <BlankSeat key={b} />)}
                 <Seat info={item} />
             </BlankSeatContainer>
         )

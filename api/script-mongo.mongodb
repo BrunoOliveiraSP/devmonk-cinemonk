@@ -1,3 +1,26 @@
 
 
-db.lugares.findOne()
+db.lugares.findOne({
+  data: '2021-07-26',
+  filme: 'Cruella',
+  hora: '09:00',
+  sala: '01',
+  'lugar.letra': 'K',
+  'lugar.numero': 1
+})
+
+
+
+
+db.lugares.updateOne({
+  data: '2021-07-26',
+  filme: 'Cruella',
+  hora: '09:00',
+  sala: '01',
+  'lugar.letra': 'K',
+  'lugar.numero': 1
+}, {
+    '$set': {
+        'lugar.situacao': 'Ocupado'
+    }
+})

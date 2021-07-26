@@ -1,8 +1,14 @@
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 
 const Container = styled.div`
-    padding: .7em 1.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    width: 9em;
+    height: 8em;
     
     background: #AA0A0A;
     border-radius: 13px; 
@@ -34,9 +40,20 @@ const Container = styled.div`
 
 
 export default function Box(props) {
-  const {sala, hora, audio} = props.session
+  const { sala, hora, audio } = props.session
+
+  const navigation = useHistory()
+  const sessionClick = () => {
+    navigation.push('/lugares', {
+      data: props.date,
+      horario: props.session,
+      filme: props.movie
+    })
+  }
+    
+
   return (
-    <Container>
+    <Container onClick={sessionClick} style={{cursor:'pointer'}}>
       <div className="sala"> Sala {sala} </div>
       <div className="hora"> {hora} </div>
       <div className="idioma"> {audio} </div>

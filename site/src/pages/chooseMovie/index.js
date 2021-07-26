@@ -18,7 +18,6 @@ export default function ChooseMovie(props) {
   useEffect(() => {
     async function load() {
       const resp = await api.listMovies(data);
-      console.log(resp);
       setMovies(resp);
     }
     load();
@@ -31,7 +30,7 @@ export default function ChooseMovie(props) {
       descriptionOnTop={true}> 
       <Content>
         {movies.map(item =>
-          <BoxMovie movie={item} />
+          <BoxMovie movie={item} key={item.filme.nome} />
         )}
       </Content>
     </PageContainer>

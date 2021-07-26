@@ -8,7 +8,6 @@ class SeatService {
 
   async getSeats(day, movie, room, hour) {
     let seats = await db.getSeats(day, movie, room, hour);
-    console.log(seats);
     
     seats = seats.map(s => {
       return {
@@ -19,7 +18,7 @@ class SeatService {
         letra: s.lugar.letra,
         numero: s.lugar.numero,
         situacao: s.lugar.situacao,
-        usuario_id: s.lugar.usuario_id,
+        totenId: s.lugar.totenId,
         expiracao: s.lugar.expiracao
     }})
 
@@ -31,6 +30,37 @@ class SeatService {
     })
     
     return seats;
+  }
+
+
+
+  async reserve(seat, totenId) {
+    let { lugar: { situacao, expiracao } } = await db.getSeat(seat);
+    
+    
+    
+    let type = 'Reservado';
+    
+    if (situacao === 'Ocupado')
+      throw 'Lugar já está ocupado';
+    
+    if (situacao === 'Reservado') {
+      let now = new Date();
+      let reserved = new Date(expiracao);
+      
+      let seconds = (now - reserved) / 1000;
+      if (seconds < 300) {
+        if (totenId !== seat.totenId) 
+          throw 'Lugar já está ocupado'
+        else {
+          type = 'Livre'
+        }
+      }
+      
+    }
+
+    await db.update(seat, totenId, type);
+    return type;
   }
 
 

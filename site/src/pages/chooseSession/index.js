@@ -7,9 +7,8 @@ import { Content, Sessions } from './styled'
 
 
 
-
-export default function ChooseSession() {
-  const { location: { state: { filme, horarios } } } = useHistory();
+export default function ChooseSession(props) {
+  const { location: { state: { data, filme, horarios } } } = useHistory();
 
   return (
     <PageContainer 
@@ -21,7 +20,7 @@ export default function ChooseSession() {
         
         <Sessions>
           {horarios.map(item => 
-            <BoxSession session={item} />
+            <BoxSession session={item} movie={filme} date={data} key={item.hora} />
           )}
         </Sessions>
         
