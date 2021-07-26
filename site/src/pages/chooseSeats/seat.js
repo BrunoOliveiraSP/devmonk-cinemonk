@@ -40,37 +40,12 @@ export default function SeatComponent(props) {
 
 
     const getSeatType = () => {
-        if (!seat.totenId)
-            return 'seat.png'
-        else if (seat.situacao === 'Ocupado')
-            return 'seat-gray.png'
-        else {
-            var now = new Date();
-            var reserved = new Date(seat.expiracao)
-            var seconds = (now - reserved) / 1000;
-
-            if (seconds > 300)
-                return 'seat.png'
-            else if (seat.totenId !== TOTEN_ID)
-                return 'seat-gray.png'
-            else
-                return 'seat-blue.png'
-        }
+        return 'seat.png';
     }
     
 
     const reserveClick = async () => {
-        let { success, reservedType, error } = await service.reserveSeat(seat)
-        if (success) {
-            if (reservedType === 'Livre')
-                setSeat({ ...seat, expiracao: null, totenId: null })
-            else
-                setSeat({ ...seat, expiracao: new Date(), totenId: TOTEN_ID })
-            
-            toast(reservedType === 'Reservado' ? 'Lugar reservado. Expira em 5min.' : 'Lugar liberado.');
-        } else {
-            toast.error(error);
-        }
+        toast('Clicou');
     }
 
     return (
