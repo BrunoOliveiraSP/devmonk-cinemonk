@@ -9,13 +9,17 @@ import SeatRow from './seatsRow'
 import { Container, RoundedButton } from './styled'
 
 import SeatService from '../../services/seatService';
+import { useHistory } from 'react-router-dom';
 const api = new SeatService();
 
 
 export default function ChooseSeats(props) {
+    const navigation = useHistory();
+    
     const { data, horario, filme } = props.location.state;
-
     const [seats, setSeats] = useState([]);
+    const [selectedSeats, setSelectedSeats] = useState([])
+        
 
     useEffect(() => {
         async function loadSeats() {
@@ -24,6 +28,18 @@ export default function ChooseSeats(props) {
         }
         loadSeats();
     }, []);
+
+
+    const chooseSeat = (seat) => {
+        const select = () => setSelectedSeats([...selectedSeats, seat])
+        const unselect = () => setSelectedSeats([...selectedSeats.filter(x => `${x.letra}${x.numero}` !== `${seat.letra}${seat.numero}`)])
+        return { select, unselect }
+    }
+
+
+    const proximo = () => {
+        navigation.push('/pagamento', { seats: selectedSeats, movie: filme, session: horario});
+    }
     
     
     return (
@@ -34,10 +50,11 @@ export default function ChooseSeats(props) {
             <Container>
                 
                 {seats.map(item => 
-                    <SeatRow row={item} key={item.letra} />    
+                    <SeatRow row={item} key={item.letra} chooseSeat={chooseSeat} />    
                 )}
             
-                <RoundedButton>
+                
+                <RoundedButton onClick={proximo}>
                     Próximo
                 </RoundedButton>
 

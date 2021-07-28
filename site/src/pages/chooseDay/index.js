@@ -4,7 +4,6 @@ import { Content } from './styled'
 
 import SessionService from '../../services/sessionService'
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 const sessionService = new SessionService();
 
 

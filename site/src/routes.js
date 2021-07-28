@@ -6,7 +6,7 @@ import ChooseDay from './pages/chooseDay'
 import ChooseMovie from './pages/chooseMovie'
 import ChooseSession from './pages/chooseSession'
 import ChooseSeats from './pages/chooseSeats'
-
+import Payment from './pages/payment'
 
 export default function Routes() {
     return (
@@ -17,6 +17,7 @@ export default function Routes() {
                 <Route path="/filme/:data" component={ChooseMovie} />
                 <Route path="/horario" component={ChooseSession} />
                 <Route path="/lugares" component={ChooseSeats} />
+                <Route path="/pagamento" component={Payment} />
             </Switch>
         </BrowserRouter>
     )

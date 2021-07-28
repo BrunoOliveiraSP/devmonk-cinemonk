@@ -1,15 +1,44 @@
 
 
+show collections
+
+db.pagamentos.find()
+
+db.pagamentos.drop()
+
+
+db.pagamentos.insertOne({
+    "data": "2021-07-01",
+    "totenId": 'BR021',
+    "sessao": {
+      "data": "2021-07-01",
+      "filme": "Cruella",
+      "sala": "01",
+      "hora": "09:00"
+    },
+    "lugares": [
+      {
+        "letra": "K",
+        "numero": 1,
+        "tipo": "Meia",
+        "preco": 15,
+        "cod_autenticacao": "736A4E92"
+      }
+    ]
+})
+
+
 db.lugares.findOne({
   data: '2021-07-26',
   filme: 'Cruella',
   hora: '09:00',
   sala: '01',
   'lugar.letra': 'K',
-  'lugar.numero': 1
+  'lugar.numero': 8
 })
 
 
+// schemaless
 
 
 db.lugares.updateOne({
@@ -18,9 +47,10 @@ db.lugares.updateOne({
   hora: '09:00',
   sala: '01',
   'lugar.letra': 'K',
-  'lugar.numero': 1
-}, {
-    '$set': {
-        'lugar.situacao': 'Ocupado'
+  'lugar.numero': 8
+  }, {
+    '$unset': {
+        'lugar.expiracao': '',
+        'lugar.totenId': ''
     }
 })

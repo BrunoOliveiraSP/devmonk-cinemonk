@@ -56,31 +56,27 @@ const BlankSeat = styled.div`
 
 
 
-function getSeatLayout(letter, item) {
-    let SeatComp = (<Seat info={item} />);
-
-    let blanks = [];
+function getSeatLayout(letter, item, chooseSeat) {
+    let seats = []
+    
     if (letter === 'I' || letter === 'J' || letter === 'K') {
         if (item.numero === 5 || item.numero === 15) {
-            blanks.push(1);
+            seats.push(<BlankSeat />);
         }
     } else if (letter !== 'A') {
         if (item.numero === 4 || item.numero === 14) {
-            blanks.push(1);
-            blanks.push(1);
+            seats.push(<BlankSeat />);
+            seats.push(<BlankSeat />);
         }
     }
 
+    seats.push((<Seat info={item} chooseSeat={chooseSeat} />))
 
-
-    if (blanks.length > 0)
-        SeatComp = (
-            <BlankSeatContainer key={`${letter}-${item.numero}`}>
-                {blanks.map((a,b) => <BlankSeat key={b} />)}
-                <Seat info={item} />
-            </BlankSeatContainer>
-        )
-    return SeatComp;
+    return (
+        <BlankSeatContainer key={`${letter}-${item.numero}`}>
+            {seats}
+        </BlankSeatContainer>
+    );
 }
 
 
@@ -95,7 +91,7 @@ export default function SeatsRow(props) {
             
             <Seats>
                 {lugares.map(item =>
-                    getSeatLayout(letra, item)
+                    getSeatLayout(letra, item, props.chooseSeat)
                 )}
             </Seats>
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 
 import { toast } from 'react-toastify';
@@ -39,6 +39,14 @@ export default function SeatComponent(props) {
     const [seat, setSeat] = useState(props.info);
 
 
+    useEffect(() => {
+        if (getSeatType().includes('blue'))
+            props.chooseSeat(seat).select()
+        else
+            props.chooseSeat(seat).unselect()
+    }, [seat])
+
+    
     const getSeatType = () => {
         if (!seat.totenId)
             return 'seat.png'
@@ -62,16 +70,19 @@ export default function SeatComponent(props) {
     const reserveClick = async () => {
         let { success, reservedType, error } = await service.reserveSeat(seat)
         if (success) {
-            if (reservedType === 'Livre')
+            if (reservedType === 'Livre') {
                 setSeat({ ...seat, expiracao: null, totenId: null })
-            else
+            }
+            else {
                 setSeat({ ...seat, expiracao: new Date(), totenId: TOTEN_ID })
-            
+            }
             toast(reservedType === 'Reservado' ? 'Lugar reservado. Expira em 5min.' : 'Lugar liberado.');
         } else {
             toast.error(error);
         }
     }
+
+
 
     return (
         <div>
